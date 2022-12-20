@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
-    android:layout_height="88dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
@@ -18,7 +18,7 @@
 
 
             <TextView
-                android:id="@+id/hoso1"
+                android:id="@+id/InvenId"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -30,7 +30,7 @@
 
 
             <TextView
-                android:id="@+id/ngay1"
+                android:id="@+id/invenDate"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -54,18 +54,39 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/base"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/vien"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/hoten1"
+            android:id="@+id/baseId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:text="Lua Van Loc"
+            android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/unit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/vien"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/unitId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Lua Van Loc"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 </LinearLayout>
