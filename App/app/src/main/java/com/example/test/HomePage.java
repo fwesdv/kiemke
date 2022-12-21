@@ -16,7 +16,6 @@ import com.example.test.Model.InventoryResponeData;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,6 +37,9 @@ public class HomePage extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fetchData();
 
+
+
+
     }
     private void fetchData()
     {
@@ -57,5 +59,5 @@ public class HomePage extends AppCompatActivity {
             }
         });
     }
-//
+
 }
