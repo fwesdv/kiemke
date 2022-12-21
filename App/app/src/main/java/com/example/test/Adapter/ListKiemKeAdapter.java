@@ -1,6 +1,7 @@
 package com.example.test.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.test.InventoryDetail;
 import com.example.test.Model.Inventory;
 import com.example.test.R;
 
@@ -38,7 +40,9 @@ public class ListKiemKeAdapter extends RecyclerView.Adapter<ListKiemKeAdapter.Vi
         Inventory inventory=inventories.get(position);
         Context context=holder.itemView.getContext();
         String id=inventories.get(position).getId();
+
         holder.Id.setText(inventory.getId());
+
         if(inventory.getDate()==null)
         {
             holder.date.setText("");
@@ -51,6 +55,14 @@ public class ListKiemKeAdapter extends RecyclerView.Adapter<ListKiemKeAdapter.Vi
 
         holder.invenBase.setText(inventory.getInvenBase());
         holder.invenUnit.setText(inventory.getInvenUnit());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(view.getContext(), InventoryDetail.class);
+                intent.putExtra("invenId",inventory.getId());
+                view.getContext().startActivity(intent);
+            }
+        });
 
     }
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -62,8 +74,8 @@ public class ListKiemKeAdapter extends RecyclerView.Adapter<ListKiemKeAdapter.Vi
         public ViewHolder(@NonNull View itemView){
             super(itemView);
 
-            Id=(TextView) itemView.findViewById(R.id.InvenId);
-            date=(TextView) itemView.findViewById(R.id.invenDate);
+            Id=(TextView) itemView.findViewById(R.id.assetId);
+            date=(TextView) itemView.findViewById(R.id.assetStatus);
             invenBase=(TextView) itemView.findViewById(R.id.baseId);
             invenUnit=(TextView) itemView.findViewById(R.id.unitId);
         }

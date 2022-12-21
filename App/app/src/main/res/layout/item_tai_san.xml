@@ -17,7 +17,7 @@
             android:weightSum="5">
 
             <TextView
-                android:id="@+id/InvenId"
+                android:id="@+id/assetId"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -29,7 +29,7 @@
 
 
             <TextView
-                android:id="@+id/invenDate"
+                android:id="@+id/assetStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
@@ -43,13 +43,15 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/assetDescription"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/vien"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/hoten1"
+            android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
