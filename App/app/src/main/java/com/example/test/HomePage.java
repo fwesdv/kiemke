@@ -1,6 +1,9 @@
 package com.example.test;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,9 +16,11 @@ import com.example.test.Adapter.ListKiemKeAdapter;
 import com.example.test.Api.ApiService;
 import com.example.test.Model.Inventory;
 import com.example.test.Model.InventoryResponeData;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,10 +41,13 @@ public class HomePage extends AppCompatActivity {
         recyclerView.addItemDecoration(decoration);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fetchData();
-
-
-
-
+        FloatingActionButton addBtn=findViewById(R.id.add);
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomePage.this, AddNewInventory.class));
+            }
+        });
     }
     private void fetchData()
     {
@@ -59,5 +67,5 @@ public class HomePage extends AppCompatActivity {
             }
         });
     }
-
+//
 }

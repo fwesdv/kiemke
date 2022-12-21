@@ -56,7 +56,7 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="292dp"
@@ -90,7 +90,7 @@
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/invenId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -111,7 +111,7 @@
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/avata"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/invenId" />
 
     <TextView
         android:id="@+id/textView10"
@@ -179,7 +179,7 @@
         android:layout_marginTop="16dp"
         android:text="Abc@gmail.com"
         android:textColor="#000000"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toEndOf="@+id/invenId"
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <TextView
