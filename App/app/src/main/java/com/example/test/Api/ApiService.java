@@ -2,6 +2,7 @@ package com.example.test.Api;
 
 import com.example.test.Model.AuthResponse;
 import com.example.test.Model.InventoryDetailResData;
+import com.example.test.Model.InventoryPostModel;
 import com.example.test.Model.InventoryResponeData;
 import com.example.test.Model.LoginModel;
 import com.google.gson.Gson;
@@ -48,4 +49,6 @@ public interface ApiService {
     Call<AuthResponse> login(@Body LoginModel loginModel);
     @POST("auth/refresh_token")
     Call<AuthResponse> refreshToken(@Body AuthResponse authResponse);
+    @POST("Inventory")
+    Call<InventoryPostModel> addNewInven(@Body InventoryPostModel inventoryPostModel);
 }
