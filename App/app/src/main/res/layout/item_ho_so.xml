@@ -18,10 +18,10 @@
 
 
             <TextView
-                android:id="@+id/InvenId"
+                android:id="@+id/assetId"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:background="@drawable/vien"
                 android:padding="15dp"
                 android:text="Hồ sơ 2"
@@ -30,23 +30,13 @@
 
 
             <TextView
-                android:id="@+id/invenDate"
+                android:id="@+id/assetStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:background="@drawable/vien"
                 android:padding="15dp"
                 android:text="01/01/2001"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/soluong1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/vien"
-                android:padding="15dp"
-                android:text="01/10"
                 android:textAlignment="center" />
 
         </LinearLayout>
@@ -76,7 +66,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/vien"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp"
+        >
 
         <TextView
             android:id="@+id/unitId"

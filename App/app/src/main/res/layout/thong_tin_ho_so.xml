@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/roczr">
+    android:background="@drawable/roczr"
+    tools:layout_editor_absoluteX="4dp"
+    tools:layout_editor_absoluteY="-32dp">
 
 
     <FrameLayout
@@ -45,7 +47,7 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="292dp"
@@ -56,11 +58,11 @@
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/invenId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="48dp"
         android:text="Hồ Sơ 1"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -72,24 +74,24 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="148dp"
         android:layout_marginEnd="44dp"
         android:text="Lọc"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/invenId" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView2"
         android:layout_width="280dp"
         android:layout_height="52dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
         android:queryHint="Tìm Kiếm"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toBottomOf="@+id/invenUnitId" />
 
     <TextView
         android:id="@+id/textView16"
@@ -100,14 +102,80 @@
         android:text="Ngày kiểm kê: "
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/invenId" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="105dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="18dp"
+        android:text="Ngày kiểm kê: "
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/invenId" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="18dp"
+        android:text="Ngày kiểm kê: "
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/invenId" />
+
+    <TextView
+        android:id="@+id/invenBaseId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="128dp"
+        android:text="01/01/2001"
+        app:layout_constraintStart_toEndOf="@+id/invenBase"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+    <TextView
+        android:id="@+id/invenUnitId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:text="01/01/2001"
+        app:layout_constraintStart_toEndOf="@+id/invenUnit"
+        app:layout_constraintTop_toBottomOf="@+id/invenBaseId" />
+
+    <TextView
+        android:id="@+id/invenBase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="56dp"
+        android:text="Cơ Sở: "
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/invenId" />
+
+    <TextView
+        android:id="@+id/invenUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="92dp"
+        android:text="Đơn vị: "
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/invenId" />
+
+    <TextView
+        android:id="@+id/assetStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="92dp"
         android:text="01/01/2001"
         app:layout_constraintStart_toEndOf="@+id/textView16"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
@@ -117,7 +185,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#2196F3"
         android:text="Xác nhận"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,9 +196,10 @@
         android:layout_width="314dp"
         android:layout_height="230dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.705"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView2" />
 

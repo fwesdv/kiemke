@@ -1,10 +1,12 @@
 package com.example.test.Model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Inventory<T> {
-    public ArrayList<T> inventoryAssetsList ;
+public class Inventory {
+    public ArrayList<Asset> inventoryAssetsList ;
     public String id;
     public Date date;
     public String invenUser;
@@ -61,11 +63,11 @@ public class Inventory<T> {
         this.invenUnit = invenUnit;
     }
 
-    public ArrayList<T> getInventoryAssetsList() {
+    public ArrayList<Asset> getInventoryAssetsList() {
         return inventoryAssetsList;
     }
 
-    public void setInventoryAssetsList(ArrayList<T> inventoryAssetsList) {
+    public void setInventoryAssetsList(ArrayList<Asset> inventoryAssetsList) {
         this.inventoryAssetsList = inventoryAssetsList;
     }
 }
