@@ -1,5 +1,6 @@
 package com.example.test;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -74,8 +75,8 @@ public class LoginActivity extends AppCompatActivity {
                     editor.apply();
 
 
-                    Log.d("Main",response.headers().toString());
-                    Log.d("Main",Integer.toString(response.code()));
+                    Intent intent = new Intent(LoginActivity.this,HomePage.class);
+                    startActivity(intent);
                     Toast.makeText(LoginActivity.this,"Login thanh con", Toast.LENGTH_SHORT).show();
                 }
                 else {
