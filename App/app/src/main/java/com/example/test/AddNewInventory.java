@@ -40,5 +40,12 @@ public class AddNewInventory extends AppCompatActivity {
                 });
             }
         });
+        Button btnBack=findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }

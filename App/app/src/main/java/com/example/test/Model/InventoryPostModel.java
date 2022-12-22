@@ -10,7 +10,6 @@ public class InventoryPostModel {
         this.baseId = baseId;
         this.unitId = unitId;
     }
-
     public String getInvenId() {
         return invenId;
     }
