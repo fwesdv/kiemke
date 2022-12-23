@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/asset_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/roczr">
@@ -48,10 +49,11 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="292dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="#FF003575"
         android:text="Quay Lại"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
@@ -61,10 +63,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:backgroundTint="#FF003575"
-        android:text="XacNhan"
+        android:text="Xác Nhận"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7" />
+        app:layout_constraintTop_toBottomOf="@+id/asssetDescription" />
 
     <TextView
         android:id="@+id/invenId"
@@ -140,7 +142,7 @@
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="44dp"
         android:text="Có tồn tại"
         android:textStyle="bold"
@@ -148,14 +150,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <Spinner
-        android:id="@+id/selectBase"
+        android:id="@+id/selectExist"
         android:layout_width="270dp"
         android:layout_height="48dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="16dp"
 
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView22"
         app:layout_constraintTop_toBottomOf="@+id/status"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
@@ -164,7 +167,7 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:text="Hiện trạng"
         android:textStyle="bold"
@@ -172,23 +175,24 @@
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     <Spinner
-        android:id="@+id/selectBase1"
+        android:id="@+id/selectStatus"
         android:layout_width="270dp"
         android:layout_height="48dp"
         android:layout_marginStart="10dp"
 
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="20dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView23"
-        app:layout_constraintTop_toBottomOf="@+id/selectBase"
+        app:layout_constraintTop_toBottomOf="@+id/selectExist"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="44dp"
         android:text="Ghi chú"
         android:textStyle="bold"
@@ -196,17 +200,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/asssetDescription"
         android:layout_width="270dp"
         android:layout_height="48dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
 
         android:background="@drawable/vien"
         android:ems="10"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView21"
-        app:layout_constraintTop_toBottomOf="@+id/selectBase1" />
+        app:layout_constraintTop_toBottomOf="@+id/selectStatus" />
 
     <TextView
         android:id="@+id/name_ts"

@@ -11,6 +11,22 @@ public class Asset implements Serializable {
     private String description;
     private AssetDetailModel assets;
 
+    public Asset(String invenId, String assetId, boolean isExist, String status, String description, AssetDetailModel assets) {
+        this.invenId = invenId;
+        this.assetId = assetId;
+        this.isExist = isExist;
+        this.status = status;
+        this.description = description;
+        this.assets = assets;
+    }
+    public Asset(String invenId, String assetId, boolean isExist, String status, String description) {
+        this.invenId = invenId;
+        this.assetId = assetId;
+        this.isExist = isExist;
+        this.status = status;
+        this.description = description;
+    }
+
     public String getInvenId() {
         return invenId;
     }

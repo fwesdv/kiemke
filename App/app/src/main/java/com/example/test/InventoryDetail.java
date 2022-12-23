@@ -22,7 +22,9 @@ import com.example.test.Api.ApiService;
 import com.example.test.Model.Asset;
 import com.example.test.Model.Inventory;
 import com.example.test.Model.InventoryDetailResData;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +73,17 @@ public class InventoryDetail extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 adapter.getFilter().filter(newText);
                 return false;
+            }
+        });
+        FloatingActionButton qrScan=findViewById(R.id.btnQRScan);
+        qrScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("assetList", (Serializable) assetList);
+                Intent intentGet=new Intent(InventoryDetail.this, ScannerActivity.class);
+                intentGet.putExtras(bundle);
+                startActivity(intentGet);
             }
         });
     }

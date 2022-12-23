@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.test.Api.ApiService;
@@ -40,7 +39,7 @@ public class AddNewInventory extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 EditText invenId=findViewById(R.id.ID_kiemKe);
-                Spinner base = (Spinner) findViewById(R.id.selectBase);
+                Spinner base = (Spinner) findViewById(R.id.selectExist);
                 String baseId = base.getSelectedItem().toString();
                 Spinner unit = (Spinner) findViewById(R.id.selectUnit);
                 String unitId = unit.getSelectedItem().toString();
@@ -84,7 +83,7 @@ public class AddNewInventory extends AppCompatActivity {
                             android.R.layout.simple_spinner_item,
                             baseIdList);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    Spinner selectBase=findViewById(R.id.selectBase);
+                    Spinner selectBase=findViewById(R.id.selectExist);
                     selectBase.setAdapter(adapter);
                 }
 

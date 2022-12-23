@@ -6,6 +6,7 @@ import com.example.test.Model.BaseResponeData;
 import com.example.test.Model.Bases;
 import com.example.test.Model.InventoryDetailResData;
 import com.example.test.Model.InventoryPostModel;
+import com.example.test.Model.InventoryPutModel;
 import com.example.test.Model.InventoryResponeData;
 import com.example.test.Model.LoginModel;
 import com.example.test.Model.Unit;
@@ -28,6 +29,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ApiService {
@@ -65,4 +67,6 @@ public interface ApiService {
     Call<AuthResponse> refreshToken(@Body AuthResponse authResponse);
     @POST("Inventory")
     Call<InventoryPostModel> addNewInven(@Body InventoryPostModel inventoryPostModel);
+    @PUT("Inventory/{id}")
+    Call<InventoryPutModel> editInven(@Path("id") String id, @Body InventoryPutModel inventoryPutModel);
 }

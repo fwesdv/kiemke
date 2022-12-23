@@ -105,7 +105,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ID_kiemKe" />
 
     <Spinner
-        android:id="@+id/selectBase"
+        android:id="@+id/selectExist"
         android:layout_width="270dp"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
@@ -126,7 +126,7 @@
         android:text="Đơn vị kiểm kê"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectBase" />
+        app:layout_constraintTop_toBottomOf="@+id/selectExist" />
 
     <EditText
         android:id="@+id/ID_kiemKe"
