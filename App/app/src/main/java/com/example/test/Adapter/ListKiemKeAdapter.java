@@ -2,6 +2,7 @@ package com.example.test.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,8 +59,24 @@ public class ListKiemKeAdapter extends RecyclerView.Adapter<ListKiemKeAdapter.Vi
             holder.date.setText(date);
         }
 
-        holder.invenBase.setText(inventory.getInvenBase());
-        holder.invenUnit.setText(inventory.getInvenUnit());
+        holder.invenBase.setText("Cơ sở: " + inventory.getInvenBase());
+        holder.invenUnit.setText("Đơn vị: " +inventory.getInvenUnit());
+        if (inventory.getFinish() != null){
+            if (inventory.getFinish() == true){
+            }
+            else {
+                holder.Id.setBackgroundColor(Color.RED);
+            }
+
+
+        }
+        else {
+            holder.Id.setBackgroundColor(Color.RED);
+
+        }
+        holder.Id.setTextColor(Color.WHITE);
+
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

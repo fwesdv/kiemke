@@ -1,7 +1,6 @@
 package com.example.test.Model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,6 +11,7 @@ public class Inventory {
     public String invenUser;
     public String invenBase;
     public String invenUnit;
+    public Boolean isFinish;
 
     public Inventory(String id, Date date, String invenUser, String invenBase, String invenUnit) {
         this.id = id;
@@ -21,7 +21,23 @@ public class Inventory {
         this.invenUnit = invenUnit;
     }
 
+    public Inventory(ArrayList<Asset> inventoryAssetsList, String id, Date date, String invenUser, String invenBase, String invenUnit, Boolean isFinish) {
+        this.inventoryAssetsList = inventoryAssetsList;
+        this.id = id;
+        this.date = date;
+        this.invenUser = invenUser;
+        this.invenBase = invenBase;
+        this.invenUnit = invenUnit;
+        this.isFinish = isFinish;
+    }
 
+    public Boolean getFinish() {
+        return isFinish;
+    }
+
+    public void setFinish(Boolean finish) {
+        isFinish = finish;
+    }
 
     public String getId() {
         return id;
