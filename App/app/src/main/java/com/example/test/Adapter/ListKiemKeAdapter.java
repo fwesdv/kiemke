@@ -63,6 +63,7 @@ public class ListKiemKeAdapter extends RecyclerView.Adapter<ListKiemKeAdapter.Vi
         holder.invenUnit.setText("Đơn vị: " +inventory.getInvenUnit());
         if (inventory.getFinish() != null){
             if (inventory.getFinish() == true){
+                holder.Id.setBackgroundColor(Color.parseColor("#30cc00"));
             }
             else {
                 holder.Id.setBackgroundColor(Color.RED);

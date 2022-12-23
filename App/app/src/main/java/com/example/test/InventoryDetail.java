@@ -22,6 +22,7 @@ import com.example.test.Api.ApiService;
 import com.example.test.Model.Asset;
 import com.example.test.Model.Inventory;
 import com.example.test.Model.InventoryDetailResData;
+import com.example.test.Model.InventoryPutModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
@@ -37,13 +38,13 @@ public class InventoryDetail extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Asset> assetList;
     ListAssetAdapter adapter;
+    Inventory inventory;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.thong_tin_ho_so);
         Intent intent = getIntent();
         String invenId = intent.getStringExtra("invenId");
-
         assetList=new ArrayList<>();
         recyclerView=(RecyclerView) findViewById(R.id.recyclerView2);
 
@@ -86,12 +87,40 @@ public class InventoryDetail extends AppCompatActivity {
                 startActivity(intentGet);
             }
         });
+        Button btnComplete=findViewById(R.id.btnHoanThanh);
+        btnComplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InventoryPutModel model=new InventoryPutModel(inventory,true);
+                ApiService.apiService.editInven(inventory.getId(),model).enqueue(new Callback<InventoryDetailResData>() {
+                    @Override
+                    public void onResponse(Call<InventoryDetailResData> call, Response<InventoryDetailResData> response) {
+                        if(response.isSuccessful())
+                        {
+                            Toast.makeText(InventoryDetail.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            finish();
+                            startActivity(new Intent(InventoryDetail.this, HomePage.class));
+                        }
+                        else{
+//                            String res= response.errorBody().;
+                            Toast.makeText(InventoryDetail.this,"Đã có lỗi xảy ra, có tài sản chưa kiểm kê hoặc hồ sơ đã hoàn thành kiểm kê", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<InventoryDetailResData> call, Throwable t) {
+                        Toast.makeText(InventoryDetail.this,"Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
     private void fetchData(String invenId){
         ApiService.apiService.getInven(invenId).enqueue(new Callback<InventoryDetailResData>() {
             @Override
             public void onResponse(Call<InventoryDetailResData> call, Response<InventoryDetailResData> response) {
                 Inventory res=response.body().getData();
+                inventory=res;
                 TextView invenId=findViewById(R.id.invenId);
                 invenId.setText(res.getId());
                 TextView date=findViewById(R.id.assetStatus);

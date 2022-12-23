@@ -46,7 +46,7 @@ public class ListAssetAdapter extends RecyclerView.Adapter<ListAssetAdapter.View
 
        if (asset.isExist() != null){
            if (asset.isExist() == true){
-               holder.status.setBackgroundColor(Color.GREEN);
+               holder.status.setBackgroundColor(Color.parseColor("#30cc00"));
            }
            if (asset.isExist() == false){
                holder.status.setBackgroundColor(Color.RED);

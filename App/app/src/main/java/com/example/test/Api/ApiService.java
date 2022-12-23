@@ -42,7 +42,7 @@ public interface ApiService {
             .dispatcher(dispatcher.getDispatcher()).build();
     Gson gson=new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
     ApiService apiService= new Retrofit.Builder()
-            .baseUrl("http://192.168.0.14:8000/api/v1/")
+            .baseUrl("http://192.168.1.8:8000/api/v1/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
@@ -68,5 +68,5 @@ public interface ApiService {
     @POST("Inventory")
     Call<InventoryPostModel> addNewInven(@Body InventoryPostModel inventoryPostModel);
     @PUT("Inventory/{id}")
-    Call<InventoryPutModel> editInven(@Path("id") String id, @Body InventoryPutModel inventoryPutModel);
+    Call<InventoryDetailResData> editInven(@Path("id") String id, @Body InventoryPutModel inventoryPutModel);
 }

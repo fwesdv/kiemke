@@ -15,12 +15,20 @@ import android.widget.Toast;
 
 import com.example.test.Api.ApiService;
 import com.example.test.Model.Asset;
+import com.example.test.Model.Inventory;
+import com.example.test.Model.InventoryDetailResData;
 import com.example.test.Model.InventoryPostModel;
 import com.example.test.Model.InventoryPutModel;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AssetDetail extends AppCompatActivity {
+    Inventory inventory;
     Asset assets;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,11 @@ public class AssetDetail extends AppCompatActivity {
             briefId.setText(assets.getAssets().getBriefId());
             TextView status=findViewById(R.id.status);
             status.setText(assets.getAssets().getStatus());
+            TextView description=findViewById(R.id.description);
+            if(assets.getDescription()!=null)
+            {
+                description.setText(assets.getDescription());
+            }
 
             ArrayList<String> isExist=new ArrayList<>();
             isExist.add("Có");
@@ -50,6 +63,17 @@ public class AssetDetail extends AppCompatActivity {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             Spinner isExistList=findViewById(R.id.selectExist);
             isExistList.setAdapter(adapter);
+            if(assets.isExist()!=null)
+            {
+                if(assets.isExist()==true)
+                {
+                    isExistList.setSelection(0);
+                }
+                else if(assets.isExist()==false)
+                {
+                    isExistList.setSelection(1);
+                }
+            }
             isExistList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -65,6 +89,14 @@ public class AssetDetail extends AppCompatActivity {
                         adapterStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         Spinner statusList=findViewById(R.id.selectStatus);
                         statusList.setAdapter(adapterStatus);
+                        if(assets.getStatus()!=null)
+                        {
+                            switch (assets.getStatus()){
+                                case "Tốt":statusList.setSelection(0); break;
+                                case "Hư Hỏng":statusList.setSelection(1); break;
+                                case "Không sử dụng":statusList.setSelection(2); break;
+                            }
+                        }
                     }
                     else {
                         ArrayList<String> assetStatus=new ArrayList<>();
@@ -77,6 +109,14 @@ public class AssetDetail extends AppCompatActivity {
                         adapterStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         Spinner statusList=findViewById(R.id.selectStatus);
                         statusList.setAdapter(adapterStatus);
+                        if(assets.getStatus()!=null)
+                        {
+                            switch (assets.getStatus()){
+                                case "Đã thanh lý":statusList.setSelection(0); break;
+                                case "Đã điều chuyển":statusList.setSelection(1); break;
+                                case "Bị thất lạc":statusList.setSelection(2); break;
+                            }
+                        }
                     }
                 }
 
@@ -105,21 +145,60 @@ public class AssetDetail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String invenId=assets.getInvenId().toString();
-                String assetId=assets.getAssetId().toString();
-                boolean isExist=false;
-                Spinner exist=findViewById(R.id.selectExist);
-                if(exist.getSelectedItem().toString()=="Có")
-                {
-                    isExist=true;
-                }
-                Spinner status=findViewById(R.id.selectStatus);
-                EditText description=findViewById(R.id.asssetDescription);
-                Asset asset=new Asset(invenId,assetId,isExist,status.getSelectedItem().toString(),description.getText().toString());
-                InventoryPutModel inventoryPostModel=new InventoryPutModel(asset);
-                ApiService.apiService.editInven(invenId,inventoryPostModel);
+                ApiService.apiService.getInven(invenId).enqueue(new Callback<InventoryDetailResData>() {
+                    @Override
+                    public void onResponse(Call<InventoryDetailResData> call, Response<InventoryDetailResData> response) {
+                        inventory=response.body().getData();
+                        String assetId=assets.getAssetId().toString();
+                        boolean isExist=false;
+                        Spinner exist=findViewById(R.id.selectExist);
+                        if(exist.getSelectedItem().toString()=="Có")
+                        {
+                            isExist=true;
+                        }
+                        Spinner status=findViewById(R.id.selectStatus);
+                        EditText description=findViewById(R.id.asssetDescription);
+                        Asset asset=new Asset(invenId,assetId,isExist,status.getSelectedItem().toString(),description.getText().toString());
+
+                        List<Asset> assetList=new ArrayList<>();
+                        inventory.getInventoryAssetsList().forEach((i)->{
+                            boolean check=i.getAssetId().equals(assetId);
+                            if(check){
+                                assetList.add(asset);
+                            }
+                            else{
+                                assetList.add(i);
+                            }
+                        });
+                        InventoryPutModel inventoryPostModel=new InventoryPutModel(inventory.getFinish(),assetList);
+                        ApiService.apiService.editInven(invenId,inventoryPostModel).enqueue(new Callback<InventoryDetailResData>() {
+                            @Override
+                            public void onResponse(Call<InventoryDetailResData> call, Response<InventoryDetailResData> response) {
+                                if(response.isSuccessful()){
+                                    Toast.makeText(AssetDetail.this,"Sửa thành công", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                    Intent finishintent=new Intent(AssetDetail.this, InventoryDetail.class);
+                                    finishintent.putExtra("invenId",inventory.getId());
+                                    startActivity(finishintent);
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<InventoryDetailResData> call, Throwable t) {
+                                Toast.makeText(AssetDetail.this,"Sửa thất bại", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(Call<InventoryDetailResData> call, Throwable t) {
+                        Toast.makeText(AssetDetail.this,"Fetch Inventory Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
 
             }
         });
-
     }
 }
