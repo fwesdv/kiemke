@@ -6,7 +6,7 @@ import java.util.List;
 public class Asset implements Serializable {
     private String invenId;
     private String assetId;
-    private boolean isExist;
+    private Boolean isExist;
     private String status;
     private String description;
     private AssetDetailModel assets;
@@ -43,11 +43,11 @@ public class Asset implements Serializable {
         this.assetId = assetId;
     }
 
-    public boolean isExist() {
+    public Boolean isExist() {
         return isExist;
     }
 
-    public void setExist(boolean exist) {
+    public void setExist(Boolean exist) {
         isExist = exist;
     }
 

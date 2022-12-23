@@ -2,6 +2,7 @@ package com.example.test.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +43,18 @@ public class ListAssetAdapter extends RecyclerView.Adapter<ListAssetAdapter.View
         holder.assetId.setText(asset.getAssetId());
         holder.status.setText(asset.getStatus());
         holder.description.setText(asset.getDescription());
+
+       if (asset.isExist() != null){
+           if (asset.isExist() == true){
+               holder.status.setBackgroundColor(Color.GREEN);
+           }
+           if (asset.isExist() == false){
+               holder.status.setBackgroundColor(Color.RED);
+           }
+           holder.status.setTextColor(Color.WHITE);
+
+       }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +108,7 @@ public class ListAssetAdapter extends RecyclerView.Adapter<ListAssetAdapter.View
         public TextView status;
         public TextView description;
         public View layout;
+
         public ViewHolder(@NonNull View itemView){
             super(itemView);
 
@@ -102,6 +116,7 @@ public class ListAssetAdapter extends RecyclerView.Adapter<ListAssetAdapter.View
             status=(TextView) itemView.findViewById(R.id.assetStatus);
             description=(TextView) itemView.findViewById(R.id.description);
             layout=(View) itemView.findViewById(R.id.linearLayout2);
+
         }
     }
 }
