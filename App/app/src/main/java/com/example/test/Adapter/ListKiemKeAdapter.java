@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,14 +17,17 @@ import com.example.test.Model.Inventory;
 import com.example.test.R;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ListKiemKeAdapter extends RecyclerView.Adapter<ListKiemKeAdapter.ViewHolder> {
+public class ListKiemKeAdapter extends RecyclerView.Adapter<ListKiemKeAdapter.ViewHolder> implements Filterable {
 
     private List<Inventory> inventories;
 
+    private List<Inventory> listSearch;
     public ListKiemKeAdapter(List<Inventory> _inventories){
         this.inventories=_inventories;
+        this.listSearch=_inventories;
     }
     @Override
     public int getItemCount(){
@@ -65,6 +70,38 @@ public class ListKiemKeAdapter extends RecyclerView.Adapter<ListKiemKeAdapter.Vi
         });
 
     }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String search=charSequence.toString();
+                if(search.isEmpty()){
+                    inventories=listSearch;
+                }
+                else{
+                    List<Inventory> list=new ArrayList<>();
+                    for(Inventory inventory:listSearch){
+                        if(inventory.getId().toLowerCase().contains(search.toLowerCase())){
+                            list.add(inventory);
+                        }
+                    }
+                    inventories=list;
+                }
+                FilterResults results=new FilterResults();
+                results.values=(inventories);
+                return results;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                inventories=(List<Inventory>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView Id;
         public TextView date;

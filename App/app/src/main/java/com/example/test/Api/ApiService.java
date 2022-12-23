@@ -1,14 +1,19 @@
 package com.example.test.Api;
 
 import com.example.test.Model.AuthResponse;
+import com.example.test.Model.BaseResponeData;
+import com.example.test.Model.Bases;
 import com.example.test.Model.InventoryDetailResData;
 import com.example.test.Model.InventoryPostModel;
 import com.example.test.Model.InventoryResponeData;
 import com.example.test.Model.LoginModel;
+import com.example.test.Model.Unit;
+import com.example.test.Model.UnitResponeData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.Dispatcher;
 import okhttp3.Interceptor;
@@ -32,9 +37,9 @@ public interface ApiService {
 
     OkHttpClient client  = new OkHttpClient().newBuilder().addInterceptor(tokenInterceptor)
             .dispatcher(dispatcher.getDispatcher()).build();
-    Gson gson=new GsonBuilder().setDateFormat("dd-MM-yyyy").create();
+    Gson gson=new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
     ApiService apiService= new Retrofit.Builder()
-            .baseUrl("http://192.168.0.14:8000/api/v1/")
+            .baseUrl("http://192.168.1.8:8000/api/v1/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
@@ -43,6 +48,13 @@ public interface ApiService {
 
     @GET("Inventory")
     Call<InventoryResponeData> getAllInven();
+
+    @GET("Bases")
+    Call<BaseResponeData> getAllBase();
+
+    @GET("Unit")
+    Call<UnitResponeData> getAllUnit();
+
     @GET("Inventory/{id}")
     Call<InventoryDetailResData> getInven(@Path("id") String id);
     @POST("auth")

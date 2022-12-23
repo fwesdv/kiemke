@@ -36,8 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login);
         fullName = findViewById(R.id.fullname);
         password = findViewById(R.id.passwprd);
-
-
         Button btn = findViewById(R.id.loginBtn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,18 +44,8 @@ public class LoginActivity extends AppCompatActivity {
                 String pass = password.getText().toString();
                 LoginModel login = new LoginModel(userName,pass);
                 Login(login);
-
-
-
-
             }
         });
-
-
-
-
-
-
     }
     void Login(LoginModel login){
 
@@ -70,32 +58,19 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor= sharedPreferences.edit();
                     editor.putString("accessToken", authInfo.accessToken);
                     editor.putString("refreshToken", authInfo.refreshToken);
-
-
                     editor.apply();
-
-
                     Intent intent = new Intent(LoginActivity.this,HomePage.class);
                     startActivity(intent);
                     Toast.makeText(LoginActivity.this,"Login thanh con", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Toast.makeText(LoginActivity.this,"Login that bai" , Toast.LENGTH_SHORT).show();
-
                 }
-
-
-
-
             }
-
             @Override
             public void onFailure(Call<AuthResponse> call, Throwable t) {
                 Toast.makeText(LoginActivity.this,"Login that bai", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
-
-
 }

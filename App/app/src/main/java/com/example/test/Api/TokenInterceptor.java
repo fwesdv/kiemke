@@ -36,17 +36,17 @@ public class TokenInterceptor implements Interceptor {
         Response response = chain.proceed(newRequest);
         accessToken = sharedPreferences.getString("accessToken", "");
         String refreshToken = sharedPreferences.getString("refreshToken", "");
-        if (response.code() == HttpsURLConnection.HTTP_UNAUTHORIZED){
-            if(!TextUtils.isEmpty(accessToken) && !TextUtils.isEmpty(refreshToken)){
-                AuthResponse oldAuth = new AuthResponse();
-                oldAuth.setAccessToken(accessToken);
-                oldAuth.setRefreshToken(refreshToken);
-                refreshToken(oldAuth);
-            }
-        }
-        else {
-
-        }
+//        if (response.code() == HttpsURLConnection.HTTP_UNAUTHORIZED){
+//            if(!TextUtils.isEmpty(accessToken) && !TextUtils.isEmpty(refreshToken)){
+//                AuthResponse oldAuth = new AuthResponse();
+//                oldAuth.setAccessToken(accessToken);
+//                oldAuth.setRefreshToken(refreshToken);
+//                refreshToken(oldAuth);
+//            }
+//        }
+//        else {
+//
+//        }
         accessToken = sharedPreferences.getString("accessToken", "");
 
 
