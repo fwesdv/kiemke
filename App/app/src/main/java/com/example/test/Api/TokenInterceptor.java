@@ -26,36 +26,42 @@ import retrofit2.Callback;
 public class TokenInterceptor implements Interceptor {
     String accessToken = "";
     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ContextHelper.getContext());
+    Request request = null;
 
 
 
     @Override
     public Response intercept(Chain chain) throws IOException {
 
-        Request newRequest = chain.request();
-        Response response = chain.proceed(newRequest);
+        Request newRequest = chain.request().newBuilder()
+//                .addHeader("Content-Type:","application/json")
+                .header("Authorization", "Bearer " + accessToken)
+                .build();
         accessToken = sharedPreferences.getString("accessToken", "");
-        String refreshToken = sharedPreferences.getString("refreshToken", "");
+        Response response = chain.proceed(newRequest);
+
         if (response.code() == HttpsURLConnection.HTTP_UNAUTHORIZED){
+            String refreshToken = sharedPreferences.getString("refreshToken", "");
+
             if(!TextUtils.isEmpty(accessToken) && !TextUtils.isEmpty(refreshToken)){
                 AuthResponse oldAuth = new AuthResponse();
                 oldAuth.setAccessToken(accessToken);
                 oldAuth.setRefreshToken(refreshToken);
                 refreshToken(oldAuth);
+                accessToken = sharedPreferences.getString("accessToken", "");
+                newRequest = chain.request().newBuilder()
+//                .addHeader("Content-Type:","application/json")
+                        .header("Authorization", "Bearer " + accessToken)
+                        .build();
+                response = chain.proceed(newRequest);
+                if (response.code() == HttpsURLConnection.HTTP_UNAUTHORIZED){
+                    //TODO: chuyen ve dang nhap
+                }
             }
         }
-        else {
-
-        }
-        accessToken = sharedPreferences.getString("accessToken", "");
 
 
-
-        newRequest = chain.request().newBuilder()
-//                .addHeader("Content-Type:","application/json")
-                .addHeader("Authorization", "Bearer " + accessToken)
-                .build();
-        return chain.proceed(newRequest);
+        return response;
     }
 
     synchronized void refreshToken(AuthResponse auth){

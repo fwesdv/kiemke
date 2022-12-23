@@ -74,10 +74,10 @@ public class LoginActivity extends AppCompatActivity {
 
                     editor.apply();
 
+                    Toast.makeText(LoginActivity.this,"Login thanh con", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(LoginActivity.this,HomePage.class);
                     startActivity(intent);
-                    Toast.makeText(LoginActivity.this,"Login thanh con", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Toast.makeText(LoginActivity.this,"Login that bai" , Toast.LENGTH_SHORT).show();
