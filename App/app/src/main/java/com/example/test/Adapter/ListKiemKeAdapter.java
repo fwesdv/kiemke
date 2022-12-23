@@ -60,6 +60,7 @@ public class ListKiemKeAdapter extends RecyclerView.Adapter<ListKiemKeAdapter.Vi
 
         holder.invenBase.setText(inventory.getInvenBase());
         holder.invenUnit.setText(inventory.getInvenUnit());
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

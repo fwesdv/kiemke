@@ -1,6 +1,7 @@
 package com.example.test.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.test.AssetDetail;
 import com.example.test.Model.Asset;
-import com.example.test.Model.Inventory;
 import com.example.test.R;
 
 import java.util.ArrayList;
@@ -40,7 +41,14 @@ public class ListAssetAdapter extends RecyclerView.Adapter<ListAssetAdapter.View
         holder.assetId.setText(asset.getAssetId());
         holder.status.setText(asset.getStatus());
         holder.description.setText(asset.getDescription());
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(view.getContext(), AssetDetail.class);
+                intent.putExtra("assetId",asset.getAssetId());
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.test.Api;
 
+import com.example.test.Model.Asset;
 import com.example.test.Model.AuthResponse;
 import com.example.test.Model.BaseResponeData;
 import com.example.test.Model.Bases;
@@ -54,7 +55,8 @@ public interface ApiService {
 
     @GET("Unit")
     Call<UnitResponeData> getAllUnit();
-
+    @GET("Asset/{id}")
+    Call<Asset> getAsset(@Path("id") String id);
     @GET("Inventory/{id}")
     Call<InventoryDetailResData> getInven(@Path("id") String id);
     @POST("auth")
