@@ -1,11 +1,15 @@
 package com.example.test.Model;
 
-public class Asset {
+import java.io.Serializable;
+import java.util.List;
+
+public class Asset implements Serializable {
     private String invenId;
     private String assetId;
     private boolean isExist;
     private String status;
     private String description;
+    private AssetDetailModel assets;
 
     public String getInvenId() {
         return invenId;
@@ -45,5 +49,13 @@ public class Asset {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public AssetDetailModel getAssets() {
+        return assets;
+    }
+
+    public void setAssets(AssetDetailModel assets) {
+        this.assets = assets;
     }
 }

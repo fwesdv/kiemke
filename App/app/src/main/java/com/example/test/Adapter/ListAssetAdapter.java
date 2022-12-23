@@ -2,6 +2,7 @@ package com.example.test.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +45,10 @@ public class ListAssetAdapter extends RecyclerView.Adapter<ListAssetAdapter.View
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("asset",asset);
                 Intent intent=new Intent(view.getContext(), AssetDetail.class);
-                intent.putExtra("assetId",asset.getAssetId());
+                intent.putExtras(bundle);
                 view.getContext().startActivity(intent);
             }
         });
