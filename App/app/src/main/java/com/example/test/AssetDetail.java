@@ -48,12 +48,16 @@ public class AssetDetail extends AppCompatActivity {
             briefId.setText(assets.getAssets().getBriefId());
             TextView status=findViewById(R.id.status);
             status.setText(assets.getAssets().getStatus());
-            TextView description=findViewById(R.id.description);
-            if(assets.getDescription()!=null)
+            TextView description=findViewById(R.id.asssetDescription);
+            String des=assets.getDescription();
+            boolean check= assets.getDescription()!="";
+            if(check)
             {
                 description.setText(assets.getDescription());
             }
-
+            else{
+                description.setText("");
+            }
             ArrayList<String> isExist=new ArrayList<>();
             isExist.add("Có");
             isExist.add("Không");

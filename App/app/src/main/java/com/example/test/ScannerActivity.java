@@ -72,15 +72,12 @@ public class ScannerActivity extends AppCompatActivity {
                             boolean check=i.getAssetId().equals(scanResult);
                             if(check){
                                 asset=i;
-
                             }
                         });
-
-
                         Intent intent=new Intent(ScannerActivity.this, AssetDetail.class);
-                        Bundle bundle = intent.getExtras();
-
-                        intent.putExtra("asset",asset);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("asset",asset);
+                        intent.putExtras(bundle);
                         startActivity(intent);
                     }
                 });
