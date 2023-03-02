@@ -7,7 +7,13 @@ git checkout <tenNhanh> chuyển nhánh
 git merge <tenNhanh> nốicác nhánh cũ với nhau
 git branch --merge/ --no-merged
 git branch -d xóa branch chưa merge
+<<<<<<< HEAD
 git branch -D xóa branch đã merge
 git branch -m <ten cu> <ten moi> xóa remote đã tạo
 git push origin <tên branch> xóa remote
 vuet them gi do
+=======
+git branch -D xóa branch đã mer
+git branch -m <ten cu
+git pus
+>>>>>>> 06f041a58eb02c66ad2064a0863ad594df0c6c57
