@@ -10,3 +10,4 @@ git branch -d xóa branch chưa merge
 git branch -D xóa branch đã merge
 git branch -m <ten cu> <ten moi> xóa remote đã tạo
 git push origin <tên branch> xóa remote
+vuet them gi do
