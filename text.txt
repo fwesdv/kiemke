@@ -1,0 +1,12 @@
+git checkout -b <tenNhanh> :tao nhanh và vào nhánh đấy
+git branch: tao nhánh
+git branch -v :xem thông tin commit tại các nhánh
+git config --global alias thiết lâp viêt tắt
+git log --online --decorate liệt kê các commit có thể truy cập
+git checkout <tenNhanh> chuyển nhánh
+git merge <tenNhanh> nốicác nhánh cũ với nhau
+git branch --merge/ --no-merged
+git branch -d xóa branch chưa merge
+git branch -D xóa branch đã merge
+git branch -m <ten cu> <ten moi> xóa remote đã tạo
+git push origin <tên branch> xóa remote
