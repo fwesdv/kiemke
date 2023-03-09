@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Dictionary</title>
+</head>
+<body>
+<form method="POST" modelAttribute="word">
+  <h2>THÊM TỪ MỚI</h2>
+  <h3 style="color:red"><span th:text="${message}"/></h3>
+  <table>
+    <tr>
+      <td>Từ mới</td>
+      <td><input id="wordId" name="word" type="text" /></td>
+    </tr>
+    <tr>
+      <td>Ý nghĩa</td>
+      <td><input id="desId" name="description" type="text" /></td>
+    </tr>
+    <tr>
+    <tr>
+      <td><label for="imageId">Ảnh minh họa</label></td>
+      <td><input id="imageId" name="img" type="file" /></td>
+    </tr>
+
+    </tr>
+
+    <tr style="text-align: right">
+      <td colspan="2">
+        <input type="submit" value="Thêm từ" />
+      </td>
+    </tr>
+
+  </table>
+</form>
+</body>
+</html>

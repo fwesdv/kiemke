@@ -1,0 +1,19 @@
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Dictionary</title>
+</head>
+<body>
+<table width="80%" border="1">
+  <tr>
+    <th width="30%">Word</th>
+    <th width="70%">Description</th>
+  </tr>
+  <tr th:each="entry : ${words}">
+    <td th:text="${entry.key}"></td>
+    <td th:text="${entry.value}"></td>
+  </tr>
+</table>
+</body>
+</html>
